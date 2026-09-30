@@ -71,3 +71,7 @@ Extensions run locally as you, so skim the code before installing one. Squad Das
 ## Contributing & license
 
 New extensions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). It's [MIT licensed](LICENSE).
+
+## Disclaimer
+
+These extensions are provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability arising from, out of or in connection with the software or its use. Use these extensions at your own risk. The MIT License in [LICENSE](LICENSE) governs this software; this notice does not modify its terms.
