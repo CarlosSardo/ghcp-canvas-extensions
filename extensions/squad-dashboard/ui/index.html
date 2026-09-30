@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Squad Dashboard</title>
+    <link rel="icon" href="data:," />
+    <script>
+      try {
+        const theme = localStorage.getItem("squad-dashboard.theme");
+        if (theme === "dark" || theme === "light") {
+          document.documentElement.setAttribute("data-ui-theme", theme);
+        }
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero" aria-labelledby="dashboard-title">
+        <div class="hero__top">
+          <div class="hero__identity">
+            <p class="eyebrow">Squad dashboard</p>
+            <h1 id="dashboard-title">Loading squad…</h1>
+            <p id="project-root" class="project-root">Waiting for snapshot</p>
+          </div>
+
+          <div class="hero__actions">
+            <div id="session-totals-pill" class="session-total" aria-live="off">
+              <span class="session-total__label">Session</span>
+              <span id="session-totals-text">0 tok · 0 AIU</span>
+            </div>
+
+            <button id="theme-btn" class="hero-button" type="button" aria-pressed="false" aria-label="Switch to light theme">
+              <span id="theme-icon" aria-hidden="true">🌙</span>
+              <span id="theme-label">Dark</span>
+            </button>
+
+            <button id="refresh-button" class="hero-button hero-button--primary" type="button">
+              <span aria-hidden="true">↻</span>
+              <span>Refresh</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="status-row" aria-label="Dashboard status">
+          <span id="coordinator-pill" class="pill pill--coordinator">
+            <span class="working-dot" aria-hidden="true"></span>
+            <span>Coordinator idle</span>
+          </span>
+          <span id="connection-pill" class="pill pill--connection">
+            <span class="status-light" aria-hidden="true"></span>
+            <span>Connecting</span>
+          </span>
+          <span id="usage-hint-pill" class="pill pill--hint" hidden>Usage partial</span>
+          <span id="backfill-pill" class="pill pill--hint" hidden>Loading history…</span>
+          <span id="session-extra-pill" class="pill pill--hint" hidden></span>
+        </div>
+
+        <dl id="summary-counts" class="summary-grid" aria-label="Agent summary">
+          <div><dt>Working</dt><dd data-count="working">0</dd></div>
+          <div><dt>Waiting</dt><dd data-count="waiting">0</dd></div>
+          <div><dt>Idle</dt><dd data-count="idle">0</dd></div>
+          <div><dt>Done</dt><dd data-count="done">0</dd></div>
+          <div><dt>Failed</dt><dd data-count="failed">0</dd></div>
+        </dl>
+      </header>
+
+      <main class="dashboard-layout">
+        <section class="agents-panel" aria-labelledby="agents-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Live roster</p>
+              <h2 id="agents-heading">Agents</h2>
+            </div>
+            <span id="generated-at" class="timestamp-label">—</span>
+          </div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <div class="empty-state__icon" aria-hidden="true">☄️</div>
+            <h3 id="empty-title">All quiet</h3>
+            <p id="empty-message">The squad is idle.</p>
+          </div>
+
+          <div id="agents-grid" class="agents-grid" aria-live="off"></div>
+        </section>
+
+        <aside class="insights-panel" aria-labelledby="insights-heading">
+          <div class="section-heading section-heading--stack">
+            <div>
+              <p class="eyebrow">Usage and activity</p>
+              <h2 id="insights-heading">Insights</h2>
+            </div>
+
+            <div id="tab-bar" class="segmented" role="tablist" aria-label="Dashboard views">
+              <button type="button" role="tab" class="segmented__tab" id="tab-agents" aria-controls="panel-agents" aria-selected="true" tabindex="0" data-view="agents">Agents</button>
+              <button type="button" role="tab" class="segmented__tab" id="tab-prompts" aria-controls="panel-prompts" aria-selected="false" tabindex="-1" data-view="prompts">Prompts</button>
+              <button type="button" role="tab" class="segmented__tab" id="tab-session" aria-controls="panel-session" aria-selected="false" tabindex="-1" data-view="session">Session</button>
+              <button type="button" role="tab" class="segmented__tab" id="tab-activity" aria-controls="panel-activity" aria-selected="false" tabindex="-1" data-view="activity">Activity</button>
+            </div>
+          </div>
+
+          <section id="panel-agents" class="panel-view" role="tabpanel" aria-labelledby="tab-agents">
+            <ol id="usage-agents" class="usage-list"></ol>
+          </section>
+
+          <section id="panel-prompts" class="panel-view" role="tabpanel" aria-labelledby="tab-prompts" hidden>
+            <ol id="prompts-list" class="prompt-list"></ol>
+          </section>
+
+          <section id="panel-session" class="panel-view" role="tabpanel" aria-labelledby="tab-session" hidden>
+            <p id="session-partial-hint" class="partial-hint" hidden>
+              History before the dashboard started shows tokens only.
+            </p>
+            <div id="session-summary" class="summary-tiles" aria-label="Session usage totals"></div>
+            <div class="session-block">
+              <div class="section-heading section-heading--sub">
+                <h3>By model</h3>
+              </div>
+              <div id="session-models" class="model-list"></div>
+            </div>
+          </section>
+
+          <section id="panel-activity" class="panel-view" role="tabpanel" aria-labelledby="tab-activity" hidden>
+            <ol id="activity-feed" class="activity-feed"></ol>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

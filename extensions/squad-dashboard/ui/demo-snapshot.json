@@ -1,0 +1,970 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-30T08:18:00+02:00",
+  "projectRoot": "/home/you/projects/demo",
+  "noSquad": false,
+  "coordinator": {
+    "status": "thinking",
+    "currentTask": "Coordinating dashboard v2 polish and verification",
+    "model": "gpt-6-sol",
+    "lastActivityAt": "2026-09-30T08:17:58+02:00",
+    "usage": {
+      "inputTokens": 14800,
+      "outputTokens": 9800,
+      "cacheReadTokens": 3200,
+      "cacheWriteTokens": 600,
+      "totalTokens": 24600,
+      "nanoAiu": 910000000,
+      "requests": 7
+    }
+  },
+  "agents": [
+    {
+      "id": "lead",
+      "name": "Lead",
+      "role": "Lead",
+      "badge": "🏗️ Lead",
+      "roster": true,
+      "kind": "member",
+      "status": "working",
+      "currentTask": "Reviewing contract alignment with the server batch stream",
+      "currentTool": "view",
+      "model": "gpt-6-sol",
+      "mode": "interactive",
+      "runtimeAgentId": "demo-lead",
+      "taskToolCallId": "demo-call-lead",
+      "startedAt": "2026-09-30T08:06:18+02:00",
+      "lastActivityAt": "2026-09-30T08:17:56+02:00",
+      "counters": {
+        "toolCalls": 9,
+        "completedTasks": 1,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0,
+          "estimatedTokens": 40000
+        },
+        "run": {
+          "inputTokens": 4200,
+          "outputTokens": 1800,
+          "cacheReadTokens": 500,
+          "cacheWriteTokens": 0,
+          "totalTokens": 6000,
+          "nanoAiu": 234000000,
+          "requests": 2
+        },
+        "byModel": {
+          "gpt-6-sol": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "totalTokens": 0,
+            "nanoAiu": 0,
+            "requests": 0,
+            "estimatedTokens": 40000
+          }
+        },
+        "estimated": true
+      }
+    },
+    {
+      "id": "frontend",
+      "name": "Frontend",
+      "role": "Frontend Dev",
+      "badge": "⚛️ Frontend",
+      "roster": true,
+      "kind": "member",
+      "status": "working",
+      "currentTask": "Compacting cards while adding prompt and session cost views",
+      "currentTool": "apply_patch",
+      "model": "gpt-6-sol",
+      "mode": "autopilot",
+      "runtimeAgentId": "demo-frontend",
+      "taskToolCallId": "demo-call-frontend",
+      "startedAt": "2026-09-30T08:10:34+02:00",
+      "lastActivityAt": "2026-09-30T08:17:59+02:00",
+      "counters": {
+        "toolCalls": 14,
+        "completedTasks": 0,
+        "failedTasks": 0
+      },
+      "note": "Theme toggle persisted locally",
+      "usage": {
+        "total": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0,
+          "estimatedTokens": 66600
+        },
+        "run": {
+          "inputTokens": 8200,
+          "outputTokens": 5200,
+          "cacheReadTokens": 1800,
+          "cacheWriteTokens": 200,
+          "totalTokens": 13400,
+          "nanoAiu": 584000000,
+          "requests": 4
+        },
+        "byModel": {
+          "gpt-6-sol": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "totalTokens": 0,
+            "nanoAiu": 0,
+            "requests": 0,
+            "estimatedTokens": 52100
+          },
+          "gpt-5.4-mini": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "totalTokens": 0,
+            "nanoAiu": 0,
+            "requests": 0,
+            "estimatedTokens": 14500
+          }
+        },
+        "estimated": true
+      }
+    },
+    {
+      "id": "gameplay",
+      "name": "Gameplay",
+      "role": "Game Logic",
+      "badge": "🎮 Game Logic",
+      "roster": true,
+      "kind": "member",
+      "status": "done",
+      "currentTask": "Reviewed usage reducer edge cases",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "interactive",
+      "runtimeAgentId": "demo-gameplay",
+      "taskToolCallId": "demo-call-gameplay",
+      "startedAt": "2026-09-30T07:57:10+02:00",
+      "lastActivityAt": "2026-09-30T08:11:42+02:00",
+      "counters": {
+        "toolCalls": 7,
+        "completedTasks": 2,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 13200,
+          "outputTokens": 7600,
+          "cacheReadTokens": 1900,
+          "cacheWriteTokens": 400,
+          "totalTokens": 20800,
+          "nanoAiu": 760000000,
+          "requests": 6
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 13200,
+            "outputTokens": 7600,
+            "cacheReadTokens": 1900,
+            "cacheWriteTokens": 400,
+            "totalTokens": 20800,
+            "nanoAiu": 760000000,
+            "requests": 6
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "tester",
+      "name": "Tester",
+      "role": "Tester",
+      "badge": "🧪 Tester",
+      "roster": true,
+      "kind": "member",
+      "status": "waiting",
+      "currentTask": "Waiting for screenshots before final smoke pass",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "interactive",
+      "runtimeAgentId": "demo-tester",
+      "taskToolCallId": "demo-call-tester",
+      "startedAt": "2026-09-30T08:09:05+02:00",
+      "lastActivityAt": "2026-09-30T08:14:48+02:00",
+      "counters": {
+        "toolCalls": 4,
+        "completedTasks": 0,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 9100,
+          "outputTokens": 5400,
+          "cacheReadTokens": 800,
+          "cacheWriteTokens": 200,
+          "totalTokens": 14500,
+          "nanoAiu": 470000000,
+          "requests": 4
+        },
+        "run": {
+          "inputTokens": 2100,
+          "outputTokens": 900,
+          "cacheReadTokens": 100,
+          "cacheWriteTokens": 0,
+          "totalTokens": 3000,
+          "nanoAiu": 92000000,
+          "requests": 1
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 9100,
+            "outputTokens": 5400,
+            "cacheReadTokens": 800,
+            "cacheWriteTokens": 200,
+            "totalTokens": 14500,
+            "nanoAiu": 470000000,
+            "requests": 4
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "scribe",
+      "name": "Scribe",
+      "role": "Session Logger",
+      "badge": "📋 Scribe",
+      "roster": true,
+      "kind": "member",
+      "status": "idle",
+      "currentTask": "",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "background",
+      "lastActivityAt": "2026-09-30T08:03:20+02:00",
+      "counters": {
+        "toolCalls": 3,
+        "completedTasks": 1,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 5400,
+          "outputTokens": 3200,
+          "cacheReadTokens": 600,
+          "cacheWriteTokens": 0,
+          "totalTokens": 8600,
+          "nanoAiu": 260000000,
+          "requests": 3
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 5400,
+            "outputTokens": 3200,
+            "cacheReadTokens": 600,
+            "cacheWriteTokens": 0,
+            "totalTokens": 8600,
+            "nanoAiu": 260000000,
+            "requests": 3
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "ralph",
+      "name": "Ralph",
+      "role": "Work Monitor",
+      "badge": "🔄 Monitor",
+      "roster": true,
+      "kind": "member",
+      "status": "idle",
+      "currentTask": "",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "background",
+      "lastActivityAt": "2026-09-30T08:01:01+02:00",
+      "counters": {
+        "toolCalls": 2,
+        "completedTasks": 1,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 4300,
+          "outputTokens": 2600,
+          "cacheReadTokens": 500,
+          "cacheWriteTokens": 0,
+          "totalTokens": 6900,
+          "nanoAiu": 210000000,
+          "requests": 2
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 4300,
+            "outputTokens": 2600,
+            "cacheReadTokens": 500,
+            "cacheWriteTokens": 0,
+            "totalTokens": 6900,
+            "nanoAiu": 210000000,
+            "requests": 2
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "fact-checker",
+      "name": "Fact Checker",
+      "role": "Fact Checker",
+      "badge": "🔍 Verifier",
+      "roster": true,
+      "kind": "member",
+      "status": "idle",
+      "currentTask": "",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "interactive",
+      "lastActivityAt": "2026-09-30T08:00:22+02:00",
+      "counters": {
+        "toolCalls": 1,
+        "completedTasks": 1,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 3800,
+          "outputTokens": 2100,
+          "cacheReadTokens": 400,
+          "cacheWriteTokens": 0,
+          "totalTokens": 5900,
+          "nanoAiu": 180000000,
+          "requests": 2
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 3800,
+            "outputTokens": 2100,
+            "cacheReadTokens": 400,
+            "cacheWriteTokens": 0,
+            "totalTokens": 5900,
+            "nanoAiu": 180000000,
+            "requests": 2
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "copilot",
+      "name": "@copilot",
+      "role": "Coding Agent",
+      "badge": "🤖 Coding Agent",
+      "roster": true,
+      "kind": "coding",
+      "status": "spawning",
+      "currentTask": "Preparing narrow-layout screenshot pass",
+      "currentTool": "task",
+      "model": "gpt-6-luna",
+      "mode": "autopilot",
+      "runtimeAgentId": "demo-copilot",
+      "taskToolCallId": "demo-call-copilot",
+      "startedAt": "2026-09-30T08:16:52+02:00",
+      "lastActivityAt": "2026-09-30T08:17:41+02:00",
+      "counters": {
+        "toolCalls": 2,
+        "completedTasks": 0,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 8600,
+          "outputTokens": 4200,
+          "cacheReadTokens": 700,
+          "cacheWriteTokens": 100,
+          "totalTokens": 12800,
+          "nanoAiu": 540000000,
+          "requests": 3
+        },
+        "run": {
+          "inputTokens": 3100,
+          "outputTokens": 1100,
+          "cacheReadTokens": 200,
+          "cacheWriteTokens": 0,
+          "totalTokens": 4200,
+          "nanoAiu": 171000000,
+          "requests": 1
+        },
+        "byModel": {
+          "gpt-6-luna": {
+            "inputTokens": 8600,
+            "outputTokens": 4200,
+            "cacheReadTokens": 700,
+            "cacheWriteTokens": 100,
+            "totalTokens": 12800,
+            "nanoAiu": 540000000,
+            "requests": 3
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "role": "Audio Dev",
+      "badge": "🔊 Audio",
+      "roster": true,
+      "kind": "member",
+      "status": "failed",
+      "currentTask": "Skipped — outside current dashboard scope",
+      "currentTool": "",
+      "model": "gpt-5.4-mini",
+      "mode": "interactive",
+      "lastActivityAt": "2026-09-30T07:58:40+02:00",
+      "counters": {
+        "toolCalls": 1,
+        "completedTasks": 0,
+        "failedTasks": 1
+      },
+      "error": "No dashboard-owned files assigned",
+      "usage": {
+        "total": {
+          "inputTokens": 1200,
+          "outputTokens": 600,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 1800,
+          "nanoAiu": 54000000,
+          "requests": 1
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {
+          "gpt-5.4-mini": {
+            "inputTokens": 1200,
+            "outputTokens": 600,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0,
+            "totalTokens": 1800,
+            "nanoAiu": 54000000,
+            "requests": 1
+          }
+        },
+        "estimated": false
+      }
+    },
+    {
+      "id": "carlos-sardo",
+      "name": "Carlos Sardo",
+      "role": "Dev Lead",
+      "badge": "👤 Human",
+      "roster": true,
+      "kind": "human",
+      "status": "idle",
+      "currentTask": "Available for sign-off",
+      "currentTool": "",
+      "lastActivityAt": "2026-09-30T08:07:00+02:00",
+      "counters": {
+        "toolCalls": 0,
+        "completedTasks": 0,
+        "failedTasks": 0
+      },
+      "usage": {
+        "total": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "run": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "totalTokens": 0,
+          "nanoAiu": 0,
+          "requests": 0
+        },
+        "byModel": {},
+        "estimated": false
+      }
+    }
+  ],
+  "activity": [
+    {
+      "id": "demo-activity-7",
+      "timestamp": "2026-09-30T08:17:59+02:00",
+      "agentId": "frontend",
+      "level": "info",
+      "text": "Frontend applied compact-card and usage view updates",
+      "source": "session"
+    },
+    {
+      "id": "demo-activity-6",
+      "timestamp": "2026-09-30T08:17:56+02:00",
+      "agentId": "lead",
+      "level": "info",
+      "text": "Lead validated batch SSE expectations against the contract",
+      "source": "session"
+    },
+    {
+      "id": "demo-activity-5",
+      "timestamp": "2026-09-30T08:17:41+02:00",
+      "agentId": "copilot",
+      "level": "info",
+      "text": "@copilot prepared a screenshot and metrics pass",
+      "source": "session"
+    },
+    {
+      "id": "demo-activity-4",
+      "timestamp": "2026-09-30T08:14:48+02:00",
+      "agentId": "tester",
+      "level": "warning",
+      "text": "Tester is waiting for final UI screenshots before validation",
+      "source": "session"
+    },
+    {
+      "id": "demo-activity-3",
+      "timestamp": "2026-09-30T08:11:42+02:00",
+      "agentId": "gameplay",
+      "level": "success",
+      "text": "Gameplay completed the reducer review",
+      "source": "session"
+    },
+    {
+      "id": "demo-activity-2",
+      "timestamp": "2026-09-30T08:03:20+02:00",
+      "agentId": "scribe",
+      "level": "success",
+      "text": "Scribe captured the last coordination note",
+      "source": "file"
+    },
+    {
+      "id": "demo-activity-1",
+      "timestamp": "2026-09-30T08:01:00+02:00",
+      "agentId": "carlos-sardo",
+      "level": "info",
+      "text": "Carlos asked for denser cards and stronger usage reporting",
+      "source": "file"
+    }
+  ],
+  "files": {
+    "decisionsInboxCount": 0,
+    "orchestrationLogCount": 11,
+    "logCount": 7,
+    "lastFileActivityAt": "2026-09-30T08:16:40+02:00"
+  },
+  "usage": {
+    "session": {
+      "inputTokens": 110500,
+      "outputTokens": 65200,
+      "cacheReadTokens": 16700,
+      "cacheWriteTokens": 3200,
+      "totalTokens": 175700,
+      "nanoAiu": 6335000000,
+      "requests": 48,
+      "estimatedTokens": 106600
+    },
+    "sessionNanoAiuAuthoritative": 6470000000,
+    "premiumRequests": 5,
+    "byModel": {
+      "gpt-6-sol": {
+        "inputTokens": 56900,
+        "outputTokens": 34000,
+        "cacheReadTokens": 9800,
+        "cacheWriteTokens": 1800,
+        "totalTokens": 90900,
+        "nanoAiu": 3530000000,
+        "requests": 24
+      },
+      "gpt-6-luna": {
+        "inputTokens": 8600,
+        "outputTokens": 4200,
+        "cacheReadTokens": 700,
+        "cacheWriteTokens": 100,
+        "totalTokens": 12800,
+        "nanoAiu": 540000000,
+        "requests": 3
+      },
+      "gpt-5.4-mini": {
+        "inputTokens": 45000,
+        "outputTokens": 27000,
+        "cacheReadTokens": 6200,
+        "cacheWriteTokens": 1300,
+        "totalTokens": 72000,
+        "nanoAiu": 2265000000,
+        "requests": 21
+      },
+      "estimated-backfill": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0,
+        "totalTokens": 0,
+        "estimatedTokens": 106600,
+        "nanoAiu": 0,
+        "requests": 0
+      }
+    },
+    "prompts": [
+      {
+        "id": "prompt-6",
+        "index": 6,
+        "startedAt": "2026-09-30T08:12:12+02:00",
+        "text": "Polish the dashboard UI: denser agent cards, per-prompt cost views, theme toggle, and long-session performance.",
+        "active": true,
+        "totals": {
+          "inputTokens": 24600,
+          "outputTokens": 16400,
+          "cacheReadTokens": 5200,
+          "cacheWriteTokens": 1000,
+          "totalTokens": 41000,
+          "nanoAiu": 1650000000,
+          "requests": 11
+        },
+        "byAgent": {
+          "frontend": {
+            "inputTokens": 14600,
+            "outputTokens": 9800,
+            "cacheReadTokens": 3200,
+            "cacheWriteTokens": 800,
+            "totalTokens": 24400,
+            "nanoAiu": 1010000000,
+            "requests": 6
+          },
+          "lead": {
+            "inputTokens": 6400,
+            "outputTokens": 3700,
+            "cacheReadTokens": 1200,
+            "cacheWriteTokens": 200,
+            "totalTokens": 10100,
+            "nanoAiu": 396000000,
+            "requests": 3
+          },
+          "tester": {
+            "inputTokens": 2200,
+            "outputTokens": 1200,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 0,
+            "totalTokens": 3400,
+            "nanoAiu": 122000000,
+            "requests": 1
+          },
+          "coordinator": {
+            "inputTokens": 1400,
+            "outputTokens": 1700,
+            "cacheReadTokens": 500,
+            "cacheWriteTokens": 0,
+            "totalTokens": 3100,
+            "nanoAiu": 122000000,
+            "requests": 1
+          }
+        }
+      },
+      {
+        "id": "prompt-5",
+        "index": 5,
+        "startedAt": "2026-09-30T08:04:10+02:00",
+        "endedAt": "2026-09-30T08:10:55+02:00",
+        "text": "Read the v2 contract, team guidance, and the current dashboard UI before implementing changes.",
+        "active": false,
+        "totals": {
+          "inputTokens": 21200,
+          "outputTokens": 11400,
+          "cacheReadTokens": 3400,
+          "cacheWriteTokens": 700,
+          "totalTokens": 32600,
+          "nanoAiu": 1170000000,
+          "requests": 8
+        },
+        "byAgent": {
+          "frontend": {
+            "inputTokens": 11800,
+            "outputTokens": 6600,
+            "cacheReadTokens": 1900,
+            "cacheWriteTokens": 500,
+            "totalTokens": 18400,
+            "nanoAiu": 670000000,
+            "requests": 5
+          },
+          "lead": {
+            "inputTokens": 5200,
+            "outputTokens": 2600,
+            "cacheReadTokens": 900,
+            "cacheWriteTokens": 100,
+            "totalTokens": 7800,
+            "nanoAiu": 280000000,
+            "requests": 2
+          },
+          "coordinator": {
+            "inputTokens": 4200,
+            "outputTokens": 2200,
+            "cacheReadTokens": 600,
+            "cacheWriteTokens": 100,
+            "totalTokens": 6400,
+            "nanoAiu": 220000000,
+            "requests": 1
+          }
+        }
+      },
+      {
+        "id": "prompt-4",
+        "index": 4,
+        "startedAt": "2026-09-30T07:59:40+02:00",
+        "endedAt": "2026-09-30T08:03:05+02:00",
+        "text": "Capture the old dashboard UI and measure long-running demo costs before rewriting anything.",
+        "active": false,
+        "totals": {
+          "inputTokens": 17500,
+          "outputTokens": 9700,
+          "cacheReadTokens": 1800,
+          "cacheWriteTokens": 400,
+          "totalTokens": 27200,
+          "nanoAiu": 930000000,
+          "requests": 7
+        },
+        "byAgent": {
+          "lead": {
+            "inputTokens": 9500,
+            "outputTokens": 4300,
+            "cacheReadTokens": 900,
+            "cacheWriteTokens": 300,
+            "totalTokens": 13800,
+            "nanoAiu": 475000000,
+            "requests": 3
+          },
+          "frontend": {
+            "inputTokens": 5400,
+            "outputTokens": 3400,
+            "cacheReadTokens": 600,
+            "cacheWriteTokens": 100,
+            "totalTokens": 8800,
+            "nanoAiu": 310000000,
+            "requests": 3
+          },
+          "coordinator": {
+            "inputTokens": 2600,
+            "outputTokens": 2000,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 0,
+            "totalTokens": 4600,
+            "nanoAiu": 145000000,
+            "requests": 1
+          }
+        }
+      },
+      {
+        "id": "prompt-3",
+        "index": 3,
+        "startedAt": "2026-09-30T07:53:05+02:00",
+        "endedAt": "2026-09-30T07:58:02+02:00",
+        "text": "Ask Gameplay and Tester for usage expectations so the UI can handle missing or partial data cleanly.",
+        "active": false,
+        "totals": {
+          "inputTokens": 16200,
+          "outputTokens": 9400,
+          "cacheReadTokens": 2100,
+          "cacheWriteTokens": 300,
+          "totalTokens": 25600,
+          "nanoAiu": 880000000,
+          "requests": 7
+        },
+        "byAgent": {
+          "gameplay": {
+            "inputTokens": 7500,
+            "outputTokens": 4200,
+            "cacheReadTokens": 900,
+            "cacheWriteTokens": 200,
+            "totalTokens": 11700,
+            "nanoAiu": 398000000,
+            "requests": 3
+          },
+          "tester": {
+            "inputTokens": 4400,
+            "outputTokens": 2200,
+            "cacheReadTokens": 500,
+            "cacheWriteTokens": 0,
+            "totalTokens": 6600,
+            "nanoAiu": 212000000,
+            "requests": 2
+          },
+          "coordinator": {
+            "inputTokens": 4300,
+            "outputTokens": 3000,
+            "cacheReadTokens": 700,
+            "cacheWriteTokens": 100,
+            "totalTokens": 7300,
+            "nanoAiu": 270000000,
+            "requests": 2
+          }
+        }
+      },
+      {
+        "id": "prompt-2",
+        "index": 2,
+        "startedAt": "2026-09-30T07:46:10+02:00",
+        "endedAt": "2026-09-30T07:52:14+02:00",
+        "text": "Set up the dashboard demo snapshot with realistic usage totals and a durable theme default.",
+        "active": false,
+        "totals": {
+          "inputTokens": 14600,
+          "outputTokens": 8100,
+          "cacheReadTokens": 2300,
+          "cacheWriteTokens": 400,
+          "totalTokens": 22700,
+          "nanoAiu": 790000000,
+          "requests": 6
+        },
+        "byAgent": {
+          "frontend": {
+            "inputTokens": 9600,
+            "outputTokens": 5100,
+            "cacheReadTokens": 1700,
+            "cacheWriteTokens": 300,
+            "totalTokens": 14700,
+            "nanoAiu": 520000000,
+            "requests": 4
+          },
+          "scribe": {
+            "inputTokens": 1800,
+            "outputTokens": 1100,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 0,
+            "totalTokens": 2900,
+            "nanoAiu": 92000000,
+            "requests": 1
+          },
+          "coordinator": {
+            "inputTokens": 3200,
+            "outputTokens": 1900,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 100,
+            "totalTokens": 5100,
+            "nanoAiu": 178000000,
+            "requests": 1
+          }
+        }
+      },
+      {
+        "id": "prompt-1",
+        "index": 1,
+        "startedAt": "2026-09-30T07:39:42+02:00",
+        "endedAt": "2026-09-30T07:45:05+02:00",
+        "text": "Review the previous dashboard polish direction and preserve the parts the user already loved.",
+        "active": false,
+        "totals": {
+          "inputTokens": 11100,
+          "outputTokens": 6200,
+          "cacheReadTokens": 1900,
+          "cacheWriteTokens": 400,
+          "totalTokens": 17300,
+          "nanoAiu": 650000000,
+          "requests": 5
+        },
+        "byAgent": {
+          "frontend": {
+            "inputTokens": 7000,
+            "outputTokens": 4300,
+            "cacheReadTokens": 1300,
+            "cacheWriteTokens": 300,
+            "totalTokens": 11300,
+            "nanoAiu": 430000000,
+            "requests": 3
+          },
+          "lead": {
+            "inputTokens": 2300,
+            "outputTokens": 900,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 0,
+            "totalTokens": 3200,
+            "nanoAiu": 102000000,
+            "requests": 1
+          },
+          "coordinator": {
+            "inputTokens": 1800,
+            "outputTokens": 1000,
+            "cacheReadTokens": 300,
+            "cacheWriteTokens": 100,
+            "totalTokens": 2800,
+            "nanoAiu": 118000000,
+            "requests": 1
+          }
+        }
+      }
+    ],
+    "activePromptId": "prompt-6",
+    "pricing": {
+      "unitLabel": "AIU",
+      "nanoPerUnit": 1000000000
+    },
+    "meta": {
+      "liveSince": "2026-09-30T07:39:42+02:00",
+      "partial": false
+    },
+    "userRequests": 6
+  },
+  "meta": {
+    "source": "demo",
+    "eventBackfill": true,
+    "errors": []
+  }
+}
