@@ -1,0 +1,22 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "descriptive",
+      "assignment_id": "ghcp-canvas-extensions-init-20260930",
+      "used_at": "2026-09-30T12:35:56+02:00"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "ghcp-canvas-extensions-init-20260930": {
+      "universe": "descriptive",
+      "created_at": "2026-09-30T12:35:56+02:00",
+      "agents": {
+        "lead": "Lead",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "tester": "Tester",
+        "security": "Security"
+      }
+    }
+  }
+}
