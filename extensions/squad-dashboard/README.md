@@ -6,8 +6,8 @@ A live Copilot canvas for [Squad](https://github.com/bradygaster/squad) projects
 
 ## Features
 
-- **Live roster** of the coordinator, every Squad member and spawned sub-agents, with statuses: working, spawning, waiting, idle, done and failed.
-- **Compact cards** showing the current task, tool, model, token and AIU totals, op counters and elapsed time.
+- **Live roster** of Squad members and spawned sub-agents, with statuses: working, spawning, waiting, idle, done and failed. The coordinator's state is shown in the header.
+- **Compact cards** showing the current task, tool, model, token and AIU totals, operation counters (tool calls, completed, failed) and elapsed time.
 - **Usage insights** for tokens and AIU per agent, per prompt and per session, plus by-model rollups. USD is shown only when you configure a rate.
 - **Activity feed** of recent session events and `.squad/` file changes (decisions, logs, orchestration).
 - **Dark/light toggle**, saved in `localStorage` and otherwise following the host theme.
