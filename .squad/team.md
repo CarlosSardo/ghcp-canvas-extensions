@@ -21,6 +21,7 @@
 | Ralph | Work Monitor | .squad/agents/ralph/charter.md | 🔄 Monitor |
 | Rai | RAI Reviewer | .squad/agents/Rai/charter.md | 🛡️ RAI |
 | Fact Checker | Fact Checker | .squad/agents/fact-checker/charter.md | 🔍 Verifier |
+| Carlos Sardo | Dev Lead | — | 👤 Human |
 
 
 ## Coding Agent

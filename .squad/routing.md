@@ -8,6 +8,7 @@ How to decide who handles what.
 |-----------|----------|----------|
 | Architecture, scope, SDK contract | Lead | New extension design, `CONTRACT.md` changes, folder conventions, catalog/README |
 | Code review & merge gating | Lead | PR review, approving/rejecting work |
+| Final sign-off & human decisions | Carlos Sardo | Priorities and scope calls, final approval to merge to `main`, anything only a human can do (accounts, secrets, releases) |
 | Canvas UI | Frontend | `ui/index.html`, `ui/app.js`, `ui/styles.css`, theming, demo mode, screenshots |
 | Extension runtime & server | Backend | `extension.mjs`, `lib/*.mjs`, `joinSession`/`createCanvas`, HTTP/SSE endpoints, stores, file parsing |
 | Performance | Backend | Store/snapshot cost, SSE fan-out, `bench/` findings (Tester verifies) |
