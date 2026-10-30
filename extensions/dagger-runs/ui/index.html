@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dagger Runs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header><div class="brand"><b class="logo">D</b><div><h1>Dagger Runs</h1><p>LOCAL PIPELINES · LIVE TELEMETRY</p></div></div><span id="connection" role="status">Connecting</span></header>
+  <div id="notice" role="alert" hidden></div>
+  <form id="launcher">
+    <label>Working directory<input id="cwd" placeholder="/absolute/path/to/project" required></label>
+    <label class="command">Dagger command<input id="command" placeholder="dagger call test" value="dagger call test" required spellcheck="false"></label>
+    <button id="run" type="submit">Run pipeline</button>
+    <button id="external" type="button" class="secondary">External terminal</button>
+  </form>
+  <section id="export" hidden><div class="section-title">Export from your terminal <button id="close-export" class="secondary">Hide</button></div><pre id="snippet"></pre><p>Run your dagger command, then finish the external run below. The endpoint is local and temporary.</p></section>
+  <div class="layout">
+    <aside><div class="section-title">RUN HISTORY <span>LAST 20</span></div><div id="history"></div></aside>
+    <main>
+      <div id="empty"><div class="empty-icon">D</div><h2>Your pipelines, up close.</h2><p>Run a Dagger command or connect an external terminal.<br>Spans stream here as your pipeline executes. No login required.</p><a href="https://docs.dagger.io/install" target="_blank" rel="noreferrer">Install Dagger ↗</a></div>
+      <div id="workspace" hidden>
+        <div class="run-heading"><div><div id="run-status"></div><h2 id="run-name"></h2><p id="run-meta"></p></div><div class="run-controls"><a id="cloud" target="_blank" rel="noreferrer" hidden>Cloud trace ↗</a><button id="finish" class="secondary" hidden>Finish external run</button><button id="cancel" class="danger">Cancel</button></div></div>
+        <div id="metrics"></div>
+        <div class="toolbar"><b>Span waterfall</b><span id="span-count"></span><button id="failure" class="secondary">First failure</button><label>Compare<select id="compare"><option value="">No comparison</option></select></label></div>
+        <div id="comparison" hidden></div>
+        <div id="errors" role="status"></div>
+        <div class="tree-head"><span>OPERATION</span><span>STATUS</span><span>DURATION / TIMELINE</span></div>
+        <div id="tree" tabindex="0" role="tree" aria-label="Dagger span tree"><div id="tree-space"></div></div>
+        <section id="detail"><div class="detail-title"><h3 id="detail-name">Select a span to inspect</h3><button id="process-logs" class="secondary">Process output</button></div><p id="detail-error"></p><div class="detail-grid"><div><h4>STDOUT / STDERR <span id="truncation"></span></h4><pre id="logs">Select an operation to view its logs.</pre></div><details><summary>Attributes &amp; events</summary><pre id="attributes"></pre></details></div></section>
+      </div>
+    </main>
+  </div>
+  <footer><span>127.0.0.1 only · OTLP HTTP/protobuf</span><span id="footer-status">Ready when you are</span></footer>
+</body>
+</html>
