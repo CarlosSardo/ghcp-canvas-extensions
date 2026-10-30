@@ -67,6 +67,15 @@ try {
   await page.locator("#tree").focus(); await page.keyboard.press("End");
   await page.waitForFunction(() => document.querySelector(".tree-row.selected")?.textContent.includes("span 9c4"));
   assert.ok(await page.locator(".tree-row").count() < 40);
+  await page.locator("#cwd").fill("/edited");
+  await page.locator("#command").fill("dagger call edited");
+  panel.updateInput({ runId: failed.id, cwd: "/reopened", command: "dagger call reopened" });
+  await page.waitForFunction(() => document.getElementById("cwd").value === "/reopened" &&
+    document.getElementById("command").value === "dagger call reopened" &&
+    document.getElementById("run-status").textContent === "failed");
+  assert.ok((await page.locator("#run-name").textContent()).includes("Fail"));
+  panel.updateInput({ runId: large.runId });
+  await page.waitForFunction(() => document.querySelector(".metric strong")?.textContent === "2500");
   assert.deepEqual(errors, []);
   process.stdout.write("Browser verification passed: root-cause auto-focus, ANSI logs, keyboard navigation, light/dark, comparison, and 2,500-span virtualization.\n");
 } finally {

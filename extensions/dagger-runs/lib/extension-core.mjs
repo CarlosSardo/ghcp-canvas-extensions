@@ -55,6 +55,8 @@ export function dispatcher(manager) {
 }
 
 export async function createPanel(manager, input = {}) {
+  input = { ...input };
+  let inputRevision = 0;
   const token = randomUUID();
   const base = `/${token}`;
   const dispatch = dispatcher(manager), clients = new Set();
@@ -86,10 +88,11 @@ export async function createPanel(manager, input = {}) {
       clients.add(res);
       req.on("close", () => clients.delete(res));
     } else if (req.method === "GET" && route === "/state") {
-      const id = url.searchParams.get("runId") || input.runId;
+      const currentInput = url.searchParams.get("inputRevision") === String(inputRevision);
+      const id = (currentInput && url.searchParams.get("runId")) || input.runId;
       const run = id ? manager.get(id) : null;
       if (run) run.tree.nodes = run.tree.nodes.map(({ attributes: _attrs, events: _events, ...s }) => s);
-      json(res, { runs: manager.list(), run, prefill: input, error: manager.error });
+      json(res, { runs: manager.list(), run, prefill: input, inputRevision, error: manager.error });
     } else if (req.method === "POST" && route.startsWith("/actions/")) {
       try {
         json(res, await dispatch(route.slice("/actions/".length), JSON.parse((await body(req, 64 * 1024)).toString())));
@@ -101,7 +104,11 @@ export async function createPanel(manager, input = {}) {
       res.end(assets.get(name));
     } else json(res, { error: "Not found" }, 404);
   });
-  return { url: `${entry.origin}${base}/`, close: async () => {
+  return { url: `${entry.origin}${base}/`, updateInput: (next) => {
+    input = { ...next };
+    inputRevision++;
+    notify();
+  }, close: async () => {
     clearTimeout(timer);
     manager.listeners.delete(notify);
     for (const res of clients) res.end();
@@ -129,7 +136,7 @@ export async function createExtension({ CanvasError, createCanvas, joinSession }
       if (!panel) {
         panel = await createPanel(manager, input);
         panels.set(ctx.instanceId, panel);
-      }
+      } else panel.updateInput(input);
       return { title: "Dagger Runs", url: panel.url };
     },
     onClose: async (ctx) => {

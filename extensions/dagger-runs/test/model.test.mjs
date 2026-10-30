@@ -6,6 +6,23 @@ import { decodeOTLP } from "../lib/otlp.mjs";
 import { attrs, logs, span, traces, traceId } from "./helpers.mjs";
 
 const create = () => makeRun("test", "/tmp", "dagger call test", "v0.21.11");
+test("abnormal completion ends unfinished spans without changing completed work or raw telemetry", () => {
+  for (const status of ["cancelled", "failed", "interrupted"]) {
+    const r = create();
+    ingest(r, traces(span("1", { endTimeUnixNano: "0" }), span("2"),
+      span("3", { attributes: attrs({ "dagger.io/dag.pending": true }) })), "traces", redactor({}));
+    r.status = status; r.endedAt = 1700000002000;
+    const first = snapshot(r, r.endedAt + 1000), later = snapshot(r, r.endedAt + 10000);
+    for (const id of ["1", "3"]) {
+      const s = first.tree.nodes.find((s) => s.spanId.endsWith(id));
+      assert.equal(s.status, status === "cancelled" ? "cancelled" : "interrupted");
+      assert.ok(s.end);
+      assert.equal(s.durationMs, later.tree.nodes.find((n) => n.id === s.id).durationMs);
+    }
+    assert.equal(first.tree.nodes.find((s) => s.spanId.endsWith("2")).status, "succeeded");
+    assert.equal(r.spans[`${traceId}:${"1".padStart(16, "0")}`].status, "running");
+  }
+});
 test("out of order spans reparent; missing parents remain visible; cached/pending/failure recognized", () => {
   const r = create(), redact = redactor({});
   ingest(r, traces(span("2", { parentSpanId: "1".padStart(16, "0"), attributes: attrs({ "dagger.io/dag.cached": true }) }),

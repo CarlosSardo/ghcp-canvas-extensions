@@ -51,6 +51,10 @@ re-executes a command. Click **Run pipeline** or call `start_run` to start it.
 Pass `runId` to reopen saved data in any panel. Closing a panel closes its UI
 server, not its running pipelines. Provider shutdown cancels owned processes;
 an unexpected provider crash is marked interrupted when history is reopened.
+Reopening an existing panel applies new `runId`, `cwd`, and `command` inputs
+over SSE, including replacing previously edited form values. Unfinished spans
+in cancelled runs show cancelled; unfinished spans in failed or interrupted
+runs show interrupted with stopped durations. Raw telemetry remains inspectable.
 
 The launcher is not a shell: the first token must be exactly `dagger`.
 Quoted arguments are supported; unquoted shell operators, expansions, pipes,

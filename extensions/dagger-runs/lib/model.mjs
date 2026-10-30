@@ -126,6 +126,11 @@ export function snapshot(run, now = Date.now()) {
     .filter((l) => l.purpose === "error_origin").map((l) => l.id)));
   for (const s of nodes) {
     s.rawStatus = run.spans[s.id].status;
+    if (["cancelled", "failed", "interrupted"].includes(run.status) && ["running", "pending"].includes(s.status)) {
+      s.status = run.status === "cancelled" ? "cancelled" : "interrupted";
+      s.end ??= end;
+      s.durationMs = Math.max(0, s.end - s.start);
+    }
     s.errorOriginIds = (s.links ?? []).filter((l) => l.purpose === "error_origin").map((l) => l.id);
     s.rootCause = s.status === "failed" && origins.has(s.id) && !s.errorOriginIds.some((id) => id !== s.id && origins.has(id));
     const code = Number(s.attributes["http.response.status_code"] ?? s.attributes["http.status_code"]);

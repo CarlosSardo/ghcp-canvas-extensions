@@ -1,6 +1,7 @@
 const $ = (id) => document.getElementById(id);
 let state = { runs: [], run: null }, selectedRun = "", selectedSpan = "", visible = [], nodes = new Map();
 let collapsed = new Set(), firstFailureShown = new Set(), loading = false, dirty = false, detailRequest = 0;
+let inputRevision = -1;
 const ROW = 32;
 const duration = (ms) => ms < 1000 ? `${Math.round(ms)} ms` : ms < 60_000 ? `${(ms / 1000).toFixed(2)} s` : `${(ms / 60_000).toFixed(1)} min`;
 function el(tag, text, cls) {
@@ -26,13 +27,19 @@ async function refresh() {
   if (loading) { dirty = true; return; }
   loading = true;
   try {
-    const response = await fetch(`state?runId=${encodeURIComponent(selectedRun)}`);
+    const response = await fetch(`state?runId=${encodeURIComponent(selectedRun)}&inputRevision=${inputRevision}`);
     const next = await response.json();
     if (!response.ok) throw new Error(next.error || "Unable to load run");
     state = next;
-    if (!$("cwd").value) $("cwd").value = state.prefill.cwd || "";
-    if (state.prefill.command && !$("command").dataset.edited) $("command").value = state.prefill.command;
-    if (!selectedRun && state.prefill.runId) selectedRun = state.prefill.runId;
+    if (state.inputRevision !== inputRevision) {
+      inputRevision = state.inputRevision;
+      selectedRun = state.prefill.runId || "";
+      selectedSpan = ""; detailRequest++; collapsed = new Set(); $("tree").scrollTop = 0;
+      $("logs").textContent = ""; $("attributes").textContent = ""; $("detail-error").textContent = "";
+      $("detail-name").textContent = "Select a span to inspect";
+      if (state.prefill.cwd !== undefined) $("cwd").value = state.prefill.cwd;
+      if (state.prefill.command !== undefined) $("command").value = state.prefill.command;
+    }
     if (!selectedRun && state.runs.length) { selectedRun = state.runs[0].id; dirty = true; }
     if (state.error) notice(state.error);
     render();
@@ -203,7 +210,6 @@ $("launcher").onsubmit = async (event) => {
   catch (error) { notice(error.message); }
   finally { $("run").disabled = false; }
 };
-$("command").oninput = () => { $("command").dataset.edited = "true"; };
 $("external").onclick = async () => {
   try {
     const r = await action("prepare_external", { cwd: $("cwd").value });

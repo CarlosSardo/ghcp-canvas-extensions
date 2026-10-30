@@ -86,6 +86,8 @@ test("history keeps latest N completed runs, preserves active, and marks interru
     await new Promise((r) => setTimeout(r, 2));
   }
   const active = await m.external({ cwd: process.cwd() });
+  await fetch(`${active.endpoint}/v1/traces`, { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(traces(span("1", { endTimeUnixNano: "0" }))) });
   m.require(active.runId).ownerPid = -1;
   await m.persist();
   assert.equal(m.list(100).length, 3);
@@ -93,6 +95,26 @@ test("history keeps latest N completed runs, preserves active, and marks interru
   await loaded.init();
   await loaded.close();
   assert.equal(loaded.get(active.runId).status, "interrupted");
+  assert.equal(loaded.get(active.runId).tree.nodes[0].status, "interrupted");
+});
+test("panel input updates notify SSE and override stale run selections on reopening", async (t) => {
+  const m = await managerFor(t);
+  const first = await m.external({ cwd: process.cwd() }), second = await m.external({ cwd: process.cwd() });
+  const panel = await createPanel(m, { runId: first.runId, cwd: "/first", command: "dagger call first" });
+  t.after(() => panel.close());
+  const response = await fetch(new URL("events", panel.url));
+  const reader = response.body.getReader();
+  await reader.read();
+  try {
+    panel.updateInput({ runId: second.runId, cwd: "/second", command: "dagger call second" });
+    assert.match(Buffer.from((await reader.read()).value).toString(), /changed/);
+    const state = await (await fetch(new URL(`state?runId=${first.runId}&inputRevision=0`, panel.url))).json();
+    assert.equal(state.run.id, second.runId);
+    assert.deepEqual(state.prefill, { runId: second.runId, cwd: "/second", command: "dagger call second" });
+    assert.equal(state.inputRevision, 1);
+    const selected = await (await fetch(new URL(`state?runId=${first.runId}&inputRevision=1`, panel.url))).json();
+    assert.equal(selected.run.id, first.runId, "history navigation still works after applying input");
+  } finally { await reader.cancel(); }
 });
 test("missing Dagger has a friendly install URL and does not create false successful runs", async (t) => {
   const m = await managerFor(t, { executable: "/no/such/dagger" });
