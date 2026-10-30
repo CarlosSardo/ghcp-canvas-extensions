@@ -6,13 +6,14 @@ This repo is powered by [Squad](https://bradygaster.github.io/squad/): a team of
 
 ## What's a Canvas extension?
 
-A Canvas extension is an `extension.mjs` file Copilot starts as a separate Node process. It serves a small UI on `127.0.0.1`, and Copilot shows that UI in a side panel. `@github/copilot-sdk` comes from the Copilot runtime, so there is no `package.json` and nothing to `npm install`.
+A Canvas extension is an `extension.mjs` file Copilot starts as a separate Node process. It serves a small UI on `127.0.0.1`, and Copilot shows that UI in a side panel. `@github/copilot-sdk` comes from the Copilot runtime, so there is no SDK dependency to install. Individual extensions may include development-only packages for tests or linting.
 
 ## Catalog
 
 | Extension | Description | Folder |
 | --- | --- | --- |
 | **Squad Dashboard** | Live roster, status, activity and token/AIU usage for a [Squad](https://github.com/bradygaster/squad) AI agent team. | [`extensions/squad-dashboard`](extensions/squad-dashboard/) |
+| **Dagger Runs** | Local Dagger CI/CD runs with live nested spans, waterfall timing, redacted logs, cached work and durable history. | [`extensions/dagger-runs`](extensions/dagger-runs/) |
 
 ## Install
 
@@ -61,7 +62,7 @@ Then ask Copilot:
 ## Requirements
 
 - A Copilot host that renders canvases, like the GitHub Copilot app.
-- No dependencies.
+- No runtime dependency installation.
 - Node.js only if you use `degit` or run the tests.
 
 ## Security

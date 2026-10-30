@@ -1,0 +1,15 @@
+{
+  "name": "dagger-runs-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "lint": "eslint .",
+    "dev": "node dev.mjs",
+    "test:live": "node test/live.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0"
+  }
+}

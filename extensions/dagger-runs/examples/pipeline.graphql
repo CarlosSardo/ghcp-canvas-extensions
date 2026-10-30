@@ -1,0 +1,29 @@
+query Build {
+  container {
+    from(address: "alpine:3.21") {
+      withExec(args: ["sh", "-c", "echo 'building sample artifact'; sleep 2; printf artifact >/tmp/artifact"]) {
+        file(path: "/tmp/artifact") { contents }
+      }
+    }
+  }
+}
+
+query Test {
+  container {
+    from(address: "alpine:3.21") {
+      withExec(args: ["sh", "-c", "printf '\\033[32mPASS: sample test\\033[0m\\n'; sleep 2"]) {
+        stdout
+      }
+    }
+  }
+}
+
+query Fail {
+  container {
+    from(address: "alpine:3.21") {
+      withExec(args: ["sh", "-c", "echo 'running deliberate failure'; sleep 3; printf '\\033[31mFAIL: expected 42, got 41\\033[0m\\n' >&2; exit 1"]) {
+        stdout
+      }
+    }
+  }
+}

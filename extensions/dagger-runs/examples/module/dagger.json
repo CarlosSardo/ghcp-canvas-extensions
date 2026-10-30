@@ -1,0 +1,6 @@
+{
+  "name": "dagger-runs-sample",
+  "engineVersion": "v0.21.11",
+  "sdk": { "source": "go" },
+  "source": "."
+}
