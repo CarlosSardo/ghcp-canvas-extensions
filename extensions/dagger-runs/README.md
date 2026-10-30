@@ -6,12 +6,26 @@ failures, persistent history, and duration comparison. No Dagger login, Cloud
 account, telemetry collector, frontend framework, or runtime dependency install
 is needed. The Copilot runtime supplies `@github/copilot-sdk`.
 
-![Completed failed Dagger run, automatically focused on its root-cause execution and stderr](screenshots/failed-run.png)
+## Canvas screenshots
 
-The screenshot is the real local renderer replaying a sanitized trace captured
-from Dagger v1.0.0-beta.21 over OTLP HTTP/protobuf, not a mock UI. The displayed
-working directory is anonymized. Host canvas loading is a separate check from
-this standalone renderer.
+These screenshots were captured from the actual running canvas after executing
+the sample Go module with Dagger **v1.0.0-beta.21**, exporting live OTLP
+HTTP/protobuf. They are not mockups or recorded-trace replays. The sample ran in
+`/tmp/dagger-runs-demo`; images are cropped to the run inspector to exclude
+unrelated history and personal launcher paths.
+
+![Successful Dagger sample test: 90 spans, 24 cached operations, zero failures, and a selected cached span in the nested waterfall](screenshots/cached-run.png)
+
+**Successful cached run.** Running `dagger call test` a second time exposes cache
+reuse alongside executed work: 24 of 90 spans are cached (27%), with no failures.
+Select any span to inspect its timing, attributes, and available output.
+
+![Intentional Dagger sample failure: nested execution waterfall focused on Container.withExec with running deliberate failure and FAIL expected 42 got 41 logs](screenshots/failed-run.png)
+
+**Root-cause failure.** `dagger call fail` intentionally exits nonzero. The
+inspector follows `error_origin` links to `Container.withExec`, distinguishes
+one root cause from propagated failures, and shows its stdout and ANSI-colored
+stderr inline.
 
 ## Install locally and open
 
@@ -323,7 +337,9 @@ input, and verify reserved `canvas.open` action rejection. This authoring
 environment did not expose `extensions_manage`/`extensions_reload`; the
 scaffold-equivalent implementation was explicitly approved, canonical bundled
 SDK docs/types were read, and local renderer/receiver checks are not claimed as
-those unavailable runtime RPC checks.
+those unavailable runtime RPC checks. A subsequent fresh-session host check
+verified discovery, opening, all eight actions, cache, root-cause logs,
+cancellation, invalid inputs, and reserved-action/security rejections.
 
 ## Limitations
 
@@ -338,7 +354,6 @@ by the extension. Windows cancellation is implemented but live verification
 was performed on Linux. A provider crash cannot reattach to an old process;
 history explicitly marks interruption instead.
 
-No extension-management tools were available in the authoring session, so
-host discovery/reload and `invoke_canvas_action` validation still require a
-capable host. No app modifications, public sharing, pushing or PR creation are
-part of this extension's installation.
+Extensions are discovered when a session starts; use a fresh session or a
+capable host's reload command after installation or provider changes.
+Installation does not modify the app or require public sharing.
